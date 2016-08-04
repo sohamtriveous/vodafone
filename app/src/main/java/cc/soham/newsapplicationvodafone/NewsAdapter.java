@@ -1,11 +1,13 @@
 package cc.soham.newsapplicationvodafone;
 
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -31,13 +33,19 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
     @Override
-    public void onBindViewHolder(NewsViewHolder holder, int position) {
+    public void onBindViewHolder(NewsViewHolder holder, final int position) {
         if (newsObjectsList == null)
             return;
         NewsObjects currentNewsObjects = newsObjectsList.get(position);
         holder.title.setText(currentNewsObjects.getTitle());
         holder.date.setText(currentNewsObjects.getDate());
         holder.description.setText(currentNewsObjects.getDescription());
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "Clicked position " + position, Toast.LENGTH_SHORT).show();
+            }
+        });
         Glide.with(holder.newsImage.getContext()).load(currentNewsObjects.getImageUrl()).into(holder.newsImage);
     }
 
@@ -53,6 +61,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         public TextView title;
         public TextView date;
         public TextView description;
+        public CardView cardView;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
@@ -60,6 +69,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             title = (TextView) itemView.findViewById(R.id.item_name_title);
             date = (TextView) itemView.findViewById(R.id.item_name_date);
             description = (TextView) itemView.findViewById(R.id.item_name_description);
+            cardView = (CardView) itemView.findViewById(R.id.item_name_card);
         }
     }
 }
