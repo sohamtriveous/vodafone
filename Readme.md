@@ -1,10 +1,13 @@
 #things to do
 
-1. In the details activity get the position from the intent
-2. Based on the position get the NewsObject at that position
-3. Based on the news object
-a) change the title of the activity
-b) load the url (you have to initialize the webview)
-4. Create a horizontal progress bar in the details activity
-5. Show/Hide the progress bar when the page starts loading/finishes loading
-6. Implement "up functionality" in your details activity so that when you click on "up", you go back to the previous screen
+(Optional) Add butterknife to your project
+
+1. add classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' to your root build.gradle
+2. add these to your module's build.gradle dependency section
+    compile 'com.jakewharton:butterknife:8.2.1'
+    apt 'com.jakewharton:butterknife-compiler:8.2.1'
+3. add the following to the top of your module's build.gradle
+    apply plugin: 'com.neenbedankt.android-apt'
+
+4. Add the @BindView annotation and the ButterKnife.bind() calls to MainActivity
+5. Add the @BindView annotation and the ButterKnife.bind() calls to NewsAdapter
