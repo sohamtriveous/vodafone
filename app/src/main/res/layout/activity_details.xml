@@ -8,7 +8,18 @@
         android:id="@+id/activity_details_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true" >
+
+
+    </WebView>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_x="71dp"
+        android:layout_y="91dp"
+        android:id="@+id/editText" />
 
     <ProgressBar
         android:id="@+id/activity_details_progress"
