@@ -1,13 +1,14 @@
 #things to do
 
-(Optional) Add butterknife to your project
-
-1. add classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8' to your root build.gradle
-2. add these to your module's build.gradle dependency section
-    compile 'com.jakewharton:butterknife:8.2.1'
-    apt 'com.jakewharton:butterknife-compiler:8.2.1'
-3. add the following to the top of your module's build.gradle
-    apply plugin: 'com.neenbedankt.android-apt'
-
-4. Add the @BindView annotation and the ButterKnife.bind() calls to MainActivity
-5. Add the @BindView annotation and the ButterKnife.bind() calls to NewsAdapter
+1. Get the response from newsapi
+2. Make sure it is valid (jsonparseronline or other parsing tools): http://www.jsoneditoronline.org/
+3. Go to jsonschematopojo: http://www.jsonschema2pojo.org/
+4. Paste the response (valid)
+5. Change the source type to json schema
+6. Give the correct packagename
+7. Give the correct class name (any class name)
+8. Change the annotation style to gson
+9. Download the zip file
+10. Copy the files to the object package
+11. Include the gson dependency: compile 'com.google.code.gson:gson:2.7'
+12. Remove the generated annotation as well as the generated import to remove all errors
