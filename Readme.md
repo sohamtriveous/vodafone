@@ -3,7 +3,6 @@
 
 1. Remove NewsObjects
 2. Create CommonStuff.java and add a static List<Articles> there, create getters and setters
-
 ```java
   public class CommonStuff {
       public static List<Article> articles;
@@ -21,11 +20,9 @@
 - update the list from NewsObjects to Article
 - update constructor
 - update all the places where we access the NewsObject
-
 4. When a response comes in MainActivity, do the following
 - store it in CommonStuff
 - create the adapter with the List<Article> we receive from the response like so:
-
 ```java
   NewsApiArticleResponse newsApiArticleResponse = response.body();
   CommonStuff.setArticles(newsApiArticleResponse.getArticles());
@@ -34,7 +31,6 @@
 - load the recyclerview like before
 - show the progressbar before the loading begins
 - hide it once the response is received
-
 5. Update DetailsActivity like so:
 - get the List<Articles> instead of List<NewsObjects> from CommonStuff
 - update NewsObjects references to Article
