@@ -4,7 +4,7 @@
 2. Make sure it is valid (jsonparseronline or other parsing tools): http://www.jsoneditoronline.org/
 3. Go to jsonschematopojo: http://www.jsonschema2pojo.org/
 4. Paste the response (valid)
-5. Change the source type to json schema
+5. Change the source type to json
 6. Give the correct packagename
 7. Give the correct class name (any class name)
 8. Change the annotation style to gson
