@@ -19,9 +19,6 @@ import cc.soham.newsapplicationvodafone.objects.Article;
  */
 
 public class DetailsActivity extends AppCompatActivity {
-    private static final String KEY_POSITION = "position";
-    private static final int DEFAULT_POSITION = 0;
-
     WebView webView;
     ProgressBar progressBar;
 
@@ -60,13 +57,14 @@ public class DetailsActivity extends AppCompatActivity {
         webView.loadUrl(newsObjects.getUrl());
     }
 
+    private static final String KEY_POSITION = "position";
+    private static final int DEFAULT_POSITION = 0;
+
     public static void start(Context context, int position) {
         Intent intent = new Intent(context, DetailsActivity.class);
         intent.putExtra(KEY_POSITION, position);
         context.startActivity(intent);
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
