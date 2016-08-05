@@ -21,7 +21,7 @@ import cc.soham.newsapplicationvodafone.objects.NewsObjects;
 
 public class DetailsActivity extends AppCompatActivity {
     private static final String KEY_POSITION = "position";
-    private static final int DEFAULT_POSITION = -1;
+    private static final int DEFAULT_POSITION = 0;
 
     WebView webView;
     ProgressBar progressBar;
