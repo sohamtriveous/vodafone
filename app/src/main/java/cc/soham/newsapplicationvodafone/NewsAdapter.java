@@ -14,8 +14,6 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import cc.soham.newsapplicationvodafone.objects.NewsObjects;
 
 /**
@@ -61,21 +59,20 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.item_name_image)
         public ImageView newsImage;
-        @BindView(R.id.item_name_title)
         public TextView title;
-        @BindView(R.id.item_name_date)
         public TextView date;
-        @BindView(R.id.item_name_description)
         public TextView description;
-        @BindView(R.id.item_name_card)
         public CardView cardView;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
 
-            ButterKnife.bind(this, itemView);
+            newsImage = (ImageView) itemView.findViewById(R.id.item_name_image);
+            title = (TextView) itemView.findViewById(R.id.item_name_title);
+            date = (TextView) itemView.findViewById(R.id.item_name_date);
+            description = (TextView) itemView.findViewById(R.id.item_name_description);
+            cardView = (CardView) itemView.findViewById(R.id.item_name_card);
         }
     }
 }
