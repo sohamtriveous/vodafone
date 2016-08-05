@@ -11,9 +11,8 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-import cc.soham.newsapplicationvodafone.objects.NewsObjects;
+import cc.soham.newsapplicationvodafone.objects.Article;
 
 /**
  * Created by sohammondal on 04/08/16.
@@ -37,12 +36,12 @@ public class DetailsActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.activity_details_progress);
 
         int position = getIntent().getIntExtra(KEY_POSITION, DEFAULT_POSITION);
-        NewsObjects newsObjects = NewsObjects.getNewsObjectsList().get(position);
+        Article newsObjects = CommonStuff.getArticles().get(position);
 
         loadWebViewForNewsObject(newsObjects);
     }
 
-    private void loadWebViewForNewsObject(NewsObjects newsObjects) {
+    private void loadWebViewForNewsObject(Article newsObjects) {
         getSupportActionBar().setTitle(newsObjects.getTitle());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient() {
@@ -58,7 +57,7 @@ public class DetailsActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
             }
         });
-        webView.loadUrl(newsObjects.getDetailsUrl());
+        webView.loadUrl(newsObjects.getUrl());
     }
 
     public static void start(Context context, int position) {

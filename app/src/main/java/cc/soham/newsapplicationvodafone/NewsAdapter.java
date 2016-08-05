@@ -1,6 +1,5 @@
 package cc.soham.newsapplicationvodafone;
 
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,16 +13,16 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import cc.soham.newsapplicationvodafone.objects.NewsObjects;
+import cc.soham.newsapplicationvodafone.objects.Article;
 
 /**
  * Created by sohammondal on 04/08/16.
  */
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder> {
-    List<NewsObjects> newsObjectsList;
+    List<Article> newsObjectsList;
 
-    public NewsAdapter(List<NewsObjects> newsObjectsList) {
+    public NewsAdapter(List<Article> newsObjectsList) {
         this.newsObjectsList = newsObjectsList;
     }
 
@@ -37,10 +36,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     public void onBindViewHolder(NewsViewHolder holder, final int position) {
         if (newsObjectsList == null)
             return;
-        NewsObjects currentNewsObjects = newsObjectsList.get(position);
-        holder.title.setText(currentNewsObjects.getTitle());
-        holder.date.setText(currentNewsObjects.getDate());
-        holder.description.setText(currentNewsObjects.getDescription());
+        Article currentArticle = newsObjectsList.get(position);
+        holder.title.setText(currentArticle.getTitle());
+        holder.date.setText(currentArticle.getPublishedAt());
+        holder.description.setText(currentArticle.getDescription());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +47,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                 DetailsActivity.start(view.getContext(), position);
             }
         });
-        Glide.with(holder.newsImage.getContext()).load(currentNewsObjects.getImageUrl()).into(holder.newsImage);
+        Glide.with(holder.newsImage.getContext()).load(currentArticle.getUrlToImage()).into(holder.newsImage);
     }
 
     @Override

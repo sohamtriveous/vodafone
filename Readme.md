@@ -1,25 +1,40 @@
 #things to do
 
 
-0. Add the following to build.gradle
+1. Remove NewsObjects
+2. Create CommonStuff.java and add a static List<Articles> there, create getters and setters
 
-```groovy
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+```java
+  public class CommonStuff {
+      public static List<Article> articles;
+
+      public static List<Article> getArticles() {
+          return articles;
+      }
+
+      public static void setArticles(List<Article> articles) {
+          CommonStuff.articles = articles;
+      }
+  }
 ```
-1. Create a networking package
-2. Create a NewsAPI class inside the networking package
-3. Define the API_KEY and BASE_URL as constants
-4. Define an interface: NewsAPIInterface
-5. Create a method for each endpoint, pass source and sortBy as query parameters
-6. Annotate it with GET with the particular endpoint url along with the KEY
-7. define a static NewsAPIInterface object
-8. Create a static getNewsAPI method which will help us in accessing the singleton
-9. in case the NewsAPIInterface is null, create an instance of Retrofit with
-a) the basurl
-b) the gson converter
-10. create an instance of the newsapiinterface
-11. In MainActivity, use NewsAPI.getNewsAPI().getArticles to get Call<NewsApiArticleResponse>
-12. use call.enqueue to get a callback for the network response
-13. in the onResponse callback, use response.body() to get the NewsApiArticleResponse object
-14. Use breakpoints/debugging to verify the response
+3. Update Adapter to reflect the following:
+- update the list from NewsObjects to Article
+- update constructor
+- update all the places where we access the NewsObject
+
+4. When a response comes in MainActivity, do the following
+- store it in CommonStuff
+- create the adapter with the List<Article> we receive from the response like so:
+
+```java
+  NewsApiArticleResponse newsApiArticleResponse = response.body();
+  CommonStuff.setArticles(newsApiArticleResponse.getArticles());
+  NewsAdapter newsAdapter = new NewsAdapter(newsApiArticleResponse.getArticles());
+```
+- load the recyclerview like before
+- show the progressbar before the loading begins
+- hide it once the response is received
+
+5. Update DetailsActivity like so:
+- get the List<Articles> instead of List<NewsObjects> from CommonStuff
+- update NewsObjects references to Article
