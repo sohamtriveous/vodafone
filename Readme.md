@@ -1,6 +1,6 @@
 #things to do
 
-- Create a new Activity, call it SourcesActivity (Use New>Activity>Empty Activity)
+- Create a new Activity, call it SwipHomeActivity (Use New>Activity>Empty Activity)
 - Also give change its intent-filter to Main and Launcher, so that it launches when the app is opened
 - Write the retrofit API definition for the sources endpoint, which includes
   - getting a sample json response from newsapi.org
@@ -22,21 +22,22 @@
         CommonStuff.sources = sources;
     }
 ```
-- Create "SourceAdapter" for our SourceActivity
-  - create a view for our sources (image and name)
-  - create the corresponding viewholders
-  - create the List<Source> in the class along with the constructor
-  - implement all the methods (onBindViewHolder, onCreateViewHolder(ViewGroup parent, int viewType), getItemCount()) like before
-  - once you click on the linearlayout (the root view for every item), launch MainActivity, make sure to pass the position of the item clicked
-- Create a layout for MainActivity which will have a progressbar and recyclerview like mainactivity
-- MainActivity will make a retrofit network call for all the sources
-  - once you receive the response, create the adapter and populate the recyclerview
-  - also store the source list in CommonStuff
-- In MainActivity
-  - retrieve the position passed from the SourceAdapter
-  - retrieve the Source at that position from CommonStuff
-  - update the original NewsAPI article call with the name and sortBy information from that source like so:
-```java
-  Call<NewsApiArticleResponse> responseCall = NewsAPI.getNewsAPI().getArticles(source.getId(), source.getSortBysAvailable().get(0));
-```
-  - This is because each source only supports a certain type of sortBy functionality and we just choose the first one
+
+- Create a Fragment called ListOfArticlesFragment, it is basically a reimplementation of MainActivity
+- it should override the following methods
+  - override onCreate: get the position of the given source
+  - onCreateView: inflate the activity_main view
+  - onViewCreated: do the same thing as the old MainActivity#onCreate like getting references to the views, calling the api, handling the response
+- create a static method called generateFragment which takes a position and creates a ListOfArticlesFragment, use Bundle and setArguments to set arguments to the fragment
+
+- In SwipeHomeActivity
+  - create a ViewPagerAdapter which extends from FragmentStatePagerAdapter
+  - implement the getItem and getCount methods
+  - it should hold a List<Sources>
+  - the constructor should take a FragmentManager and List<Sources>
+  - update the getItem and getCount methods as required
+  - Make a network response call for the sources endpoint using Retrofit
+    - there, get the list of sources
+    - store it in commongstuff
+    - create a ViewPagerAdapter based on the List<Sources>
+    - set it on the adapter

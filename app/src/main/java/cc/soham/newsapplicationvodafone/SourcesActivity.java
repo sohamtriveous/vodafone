@@ -2,6 +2,7 @@ package cc.soham.newsapplicationvodafone;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -28,7 +29,7 @@ public class SourcesActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.activity_source_sourceitems);
         progressBar = (ProgressBar) findViewById(R.id.activity_source_progress);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 4));
 
         progressBar.setVisibility(View.VISIBLE);
         Call<NewsApiSourcesResponse> responseCall = NewsAPI.getNewsAPI().getSources();

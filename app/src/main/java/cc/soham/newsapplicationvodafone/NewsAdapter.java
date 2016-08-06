@@ -43,7 +43,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Clicked position " + position, Toast.LENGTH_SHORT).show();
+                ((SwipeHomeActivity) view.getContext()).showToast(position);
                 DetailsActivity.start(view.getContext(), position);
             }
         });

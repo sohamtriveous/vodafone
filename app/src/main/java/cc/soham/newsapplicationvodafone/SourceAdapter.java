@@ -36,9 +36,8 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.SourcesVie
         if (sources == null)
             return;
         Source source = sources.get(position);
-        holder.title.setText(source.getName());
-        Glide.with(holder.sourceImage.getContext()).load(source.getUrlsToLogos().getMedium()).into(holder.sourceImage);
-        holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+        Glide.with(holder.sourceImage.getContext()).load(source.getUrlsToLogos().getLarge()).into(holder.sourceImage);
+        holder.sourceImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MainActivity.start(view.getContext(), position);
@@ -55,15 +54,10 @@ public class SourceAdapter extends RecyclerView.Adapter<SourceAdapter.SourcesVie
 
     public static class SourcesViewHolder extends RecyclerView.ViewHolder {
         public ImageView sourceImage;
-        public TextView title;
-        public LinearLayout linearLayout;
 
         public SourcesViewHolder(View itemView) {
             super(itemView);
-
             sourceImage = (ImageView) itemView.findViewById(R.id.item_sources_image);
-            title = (TextView) itemView.findViewById(R.id.item_sources_text);
-            linearLayout = (LinearLayout) itemView.findViewById(R.id.item_sources_ll);
         }
     }
 }
