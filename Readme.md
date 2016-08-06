@@ -1,7 +1,8 @@
 #things to do
 
 - Create a new Activity, call it SwipHomeActivity (Use New>Activity>Empty Activity)
-- Also give change its intent-filter to Main and Launcher, so that it launches when the app is opened
+  - Also give change its intent-filter to Main and Launcher, so that it launches when the app is opened
+
 - Write the retrofit API definition for the sources endpoint, which includes
   - getting a sample json response from newsapi.org
   - validating it in jsoneditoronline
@@ -12,7 +13,7 @@
       @GET("sources")
       Call<NewsApiSourcesResponse> getSources();
 ```
-- Add support for storing and retrieving the Sources in CommonStuff
+  - Add support for storing and retrieving the Sources in CommonStuff
 ```java
     public static List<Source> sources;
     public static List<Source> getSources() {
@@ -24,11 +25,11 @@
 ```
 
 - Create a Fragment called ListOfArticlesFragment, it is basically a reimplementation of MainActivity
-- it should override the following methods
-  - override onCreate: get the position of the given source
-  - onCreateView: inflate the activity_main view
-  - onViewCreated: do the same thing as the old MainActivity#onCreate like getting references to the views, calling the api, handling the response
-- create a static method called generateFragment which takes a position and creates a ListOfArticlesFragment, use Bundle and setArguments to set arguments to the fragment
+  - it should override the following methods
+    - override onCreate: get the position of the given source
+    - onCreateView: inflate the activity_main view
+    - onViewCreated: do the same thing as the old MainActivity#onCreate like getting references to the views, calling the api, handling the response
+  - create a static method called generateFragment which takes a position and creates a ListOfArticlesFragment, use Bundle and setArguments to set arguments to the fragment
 
 - In SwipeHomeActivity
   - create a ViewPagerAdapter which extends from FragmentStatePagerAdapter
