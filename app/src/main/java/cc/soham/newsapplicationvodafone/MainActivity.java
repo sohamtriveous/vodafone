@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import cc.soham.newsapplicationvodafone.networking.NewsAPI;
 import cc.soham.newsapplicationvodafone.objects.NewsApiArticleResponse;
 import cc.soham.newsapplicationvodafone.objects.Source;
